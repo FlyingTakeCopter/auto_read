@@ -29,8 +29,8 @@ def findsearch():
             exit()
         # 截图
         os.system("adb shell screencap -p /sdcard/screen.jpg")
-        # 推送
-        os.system("adb pull /sdcard/screen.jpg C:/workspace_py/opencv_face/screen.jpg")
+        # 推送 到当前目录下
+        os.system("adb pull /sdcard/screen.jpg %s" % (os.path.abspath('.')))
         # 读取灰度图
         imgGray = cv2.imread("screen.jpg", 0)
         # 二值化

@@ -17,7 +17,7 @@ currentClick = 0
 imgSearch3 = cv2.imread("search3.jpg", 0)
 imgSearch4 = cv2.imread("search4.jpg", 0)
 imgSearch5 = cv2.imread("search5.jpg", 0)
-
+imgSearch6 = cv2.imread("search6.jpg", 0)
 
 # 分析search.jpg位置
 def findsearch():
@@ -48,26 +48,35 @@ def findsearch():
         # if (min_loc[0] > 559) & (min_loc[0] < 569):
         #     # 在屏幕内
         #     return min_loc[0], min_loc[1]
-        # 匹配5号模板 imgSearch5 927
+        # 匹配5号模板 深色广告 imgSearch5 927
         res = cv2.matchTemplate(imgGray, imgSearch5, cv2.TM_SQDIFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         if (min_loc[0] > 922) & (min_loc[0] < 932):
+            # 在屏幕内
+            return min_loc[0], min_loc[1]
+        # 匹配6号模板 浅色广告 imgSearch5 957
+        res = cv2.matchTemplate(imgGray, imgSearch6, cv2.TM_SQDIFF_NORMED)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        if (min_loc[0] > 952) & (min_loc[0] < 962):
             # 在屏幕内
             return min_loc[0], min_loc[1]
         # 不在,向上滑动2/3屏幕，重新检索
         os.system("adb shell input swipe 600 840 600 1700 500")  # 按住滑动
 
 
+# os.system("adb shell screencap -p /sdcard/screen.jpg")
+# # 推送 到当前目录下
+# os.system("adb pull /sdcard/screen.jpg %s" % (os.path.abspath('.')))
 # # 截图保存到的临时路径
-# imgSrc = cv2.imread("ss.jpg", 0)
+# imgSrc = cv2.imread("screen.jpg", 0)
 # # 二值化
 # ret, imgThreshold = cv2.threshold(imgSrc, 238, 255, cv2.THRESH_BINARY)
-# # 创建对比度增强图片
-# # kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], np.int32)  #
-# # imgStrong = cv2.filter2D(imgSrc, -1, kernel)
-# # 转灰度，计算图片宽高
-# # imgGray = cv2.cvtColor(imgStrong, cv2.COLOR_BGR2GRAY)
-# # w_screen, h_screen = imgGray.shape[::-1]
+# 创建对比度增强图片
+# kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], np.int32)  #
+# imgStrong = cv2.filter2D(imgSrc, -1, kernel)
+# 转灰度，计算图片宽高
+# imgGray = cv2.cvtColor(imgStrong, cv2.COLOR_BGR2GRAY)
+# w_screen, h_screen = imgGray.shape[::-1]
 
 # 查找检索图位置
 # x, y = findsearch()

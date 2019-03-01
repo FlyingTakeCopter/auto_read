@@ -19,8 +19,8 @@ readTime_qtt = readTimeBase * 2
 # autoReadQuTouTiao.read()
 
 # 聚看点
-appTime_qtt = appTimeBase * 1
-readTime_qtt = readTimeBase * 3
+appTime_qtt = appTimeBase * 2
+readTime_qtt = 40 * 3
 
 autoJuKanDian = ARJuKanDian(appTime_qtt, readTime_qtt)
 autoJuKanDian.read()

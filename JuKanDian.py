@@ -184,12 +184,12 @@ class ARJuKanDian(object):
 
     def findallclick(self):
         exeCount = 0
-        upordown = 1
         # 查找 检索图 位置
         while True:
             if exeCount > 3:
                 print("搜索不到")
-                break
+                return
+            exeCount += 1
             # 截图
             os.system("adb shell screencap -p /sdcard/screen.jpg")
             # 推送 到当前目录下
@@ -201,12 +201,13 @@ class ARJuKanDian(object):
             res = cv2.matchTemplate(imgGray, self.imgSearchAll, cv2.TM_SQDIFF_NORMED)
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
             if (min_loc[0] > (rightx - 5)) & (min_loc[0] < (rightx + 5)):
-                # 在屏幕内
-                return min_loc[0], min_loc[1]
+                # 点开阅读全文
+                os.system("adb shell input tap %d %d" % (min_loc[0], min_loc[1]))
+                return
             # 不在,向上滑动屏幕，重新检索
-            os.system("adb shell input swipe 600 0 600 2000 100")  # 按住滑动
+            os.system("adb shell input swipe 600 300 600 2000 100")  # 按住滑动
             # 向下滑动
-            os.system("adb shell input swipe 600 800 600 0 400")  # 按住滑动
+            os.system("adb shell input swipe 600 800 600 300 400")  # 按住滑动
 
     def read(self):
         appstart = time.time()
@@ -215,16 +216,14 @@ class ARJuKanDian(object):
             # 记录开始时间
             start = time.time()
             # 点开全文 获得更多
-            os.system("adb shell input swipe 600 800 600 0 400")  # 按住滑动
+            os.system("adb shell input swipe 600 1100 600 300 400")  # 按住滑动
             # 检索阅读全文按钮
-            allx, ally = self.findallclick()
-            # 点开阅读全文
-            os.system("adb shell input tap %d %d" % (allx, ally))
+            self.findallclick()
             # 每间隔1s循环向下/向上翻页，持续固定时长X
             while (time.time() - start) < self.readtime:
                 x = random.randint(0, 100)
                 os.system("adb shell input swipe 600 600 600 %d 400" % (500 - x))  # 按住滑动
-                time.sleep(1)
+                time.sleep(0.5)
             # 快速向下滑动几秒 直到底
             i = 0
             while self.downTicks != i:

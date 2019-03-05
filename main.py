@@ -2,6 +2,7 @@ from QuTouTiao import ARQuTouTiao
 from JuKanDian import ARJuKanDian
 from HongBaoTouTiao import ARHongBaoTouTiao
 from ShuaBao import ARShuaBao
+from BoBo import ARBoBo
 import os
 
 # 获取模拟器总数
@@ -57,8 +58,17 @@ App阅读时长
 # autoHongBaoTouTiao.read()
 
 # 刷宝
-appTime_qtt = appTimeBase * 3
-readTime_qtt = 10
+# appTime_qtt = appTimeBase * 3
+# readTime_qtt = 10
+#
+# autoShuaBao = ARShuaBao(appTime_qtt, readTime_qtt)
+# autoShuaBao.read(devices)
 
-autoShuaBao = ARShuaBao(appTime_qtt, readTime_qtt)
-autoShuaBao.read(devices)
+# 波波
+aRBoBo = ARBoBo(execount=100, readtime=70)
+aRBoBo.read(devices)
+
+
+
+
+

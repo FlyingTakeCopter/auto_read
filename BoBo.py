@@ -22,7 +22,8 @@ class ARBoBo(object):
             # 点击第一个观看
             x1 = 600 + random.randint(0, 100) * i
             y1 = 400 - random.randint(0, 40) * i
-            os.system("adb shell input tap %d %d" % (x1, y1))
+            for dName in devices:
+                os.system("adb -s " + dName + " shell input tap %d %d" % (x1, y1))
             # 浏览70秒
             # 记录开始时间
             start = time.time()

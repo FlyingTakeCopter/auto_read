@@ -65,10 +65,12 @@ App阅读时长
 # autoShuaBao.read(devices)
 
 # 波波
-aRBoBo = ARBoBo(execount=100, readtime=70)
+# aRBoBo = ARBoBo(execount=100, readtime=70)
+# aRBoBo.read(devices)
+
+# 沙发视频
+aRBoBo = ARBoBo(execount=100, readtime=60)
 aRBoBo.read(devices)
-
-
 
 
 

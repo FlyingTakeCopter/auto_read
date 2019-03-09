@@ -35,7 +35,9 @@ class ARBoBo(object):
             for dName in devices:
                 x1 = random.randint(300, 350)
                 x2 = x1 + random.randint(0, 5) * i
-                y1 = 1700 + random.randint(0, 10) * i
+                # 波波加了个 持续下拉显示天气 不能向下拉的太多
+
+                y1 = 800 + random.randint(0, 10) * i
                 y2 = 500 + random.randint(0, 10) * i
                 tm = random.randint(500, 1000)
                 # 下拉刷新

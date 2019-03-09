@@ -58,15 +58,14 @@ App阅读时长
 # autoHongBaoTouTiao.read()
 
 # 刷宝
-appTime_qtt = appTimeBase * 1.3
-readTime_qtt = 10
-
-autoShuaBao = ARShuaBao(appTime_qtt, readTime_qtt)
-autoShuaBao.read(devices)
+# appTime_qtt = appTimeBase * 1.4
+#
+# autoShuaBao = ARShuaBao(appTime_qtt)
+# autoShuaBao.read(devices)
 
 # 波波
-# aRBoBo = ARBoBo(execount=100, readtime=70)
-# aRBoBo.read(devices)
+aRBoBo = ARBoBo(execount=100, readtime=70)
+aRBoBo.read(devices)
 
 # 沙发视频
 # aRBoBo = ARBoBo(execount=100, readtime=60)

@@ -3,6 +3,8 @@ from JuKanDian import ARJuKanDian
 from HongBaoTouTiao import ARHongBaoTouTiao
 from ShuaBao import ARShuaBao
 from BoBo import ARBoBo
+from ShaFa import ARShaFa
+from ZhongZi import ARZhongZi
 import os
 
 # 获取模拟器总数
@@ -64,12 +66,16 @@ App阅读时长
 # autoShuaBao.read(devices)
 
 # 波波
-aRBoBo = ARBoBo(execount=100, readtime=70)
-aRBoBo.read(devices)
-
-# 沙发视频
-# aRBoBo = ARBoBo(execount=100, readtime=60)
+# aRBoBo = ARBoBo(execount=100, readtime=70)
 # aRBoBo.read(devices)
+
+# 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
+# aRShaFa = ARShaFa(execount=100, readtime=1)
+# aRShaFa.read(devices)
+
+# 种子
+aRZhongZi = ARZhongZi(execount=100, readtime=50)
+aRZhongZi.read(devices)
 
 
 

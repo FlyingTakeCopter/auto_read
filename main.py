@@ -58,7 +58,7 @@ App阅读时长
 # autoHongBaoTouTiao.read()
 
 # 刷宝
-# appTime_qtt = appTimeBase * 1.4
+# appTime_qtt = appTimeBase * 3
 #
 # autoShuaBao = ARShuaBao(appTime_qtt)
 # autoShuaBao.read(devices)

@@ -39,10 +39,10 @@ class ARBoBo(object):
 
                 y1 = 800 + random.randint(0, 10) * i
                 y2 = 500 + random.randint(0, 10) * i
-                tm = random.randint(500, 1000)
+                tm = random.randint(1000, 1500)
                 # 下拉刷新
                 os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d" % (x1, y2, x2, y1, tm))
             # 等待
-            time.sleep(random.randint(3, 5))
+            time.sleep(random.randint(1, 3))
 
         print("阅读完成：波波")

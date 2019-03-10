@@ -16,7 +16,7 @@ class ARShuaBao(object):
             count += 1
             print("阅读%d次" % count)
             # 随机阅读时间
-            readtime = random.randint(5, 10)
+            readtime = random.randint(3, 6)
             # 记录开始时间
             start = time.time()
             # 每间隔1s循环向下/向上翻页，持续固定时长X
@@ -25,8 +25,8 @@ class ARShuaBao(object):
 
             x = random.randint(350, 450)
             y1 = random.randint(800, 850)
-            y2 = y1 - random.randint(700, 710)
+            y2 = y1 - random.randint(600, 610)
             # 设备循环执行
             for dName in devices:
-                os.system("adb -s " + dName + " shell input swipe %d %d %d %d 500 &" % (x, y1, x, y2))  # 后台执行 小米800-200
+                os.system("adb -s " + dName + " shell input swipe %d %d %d %d 1500 &" % (x, y1, x, y2))  # 后台执行 小米800-200
         print("阅读完成：刷宝")

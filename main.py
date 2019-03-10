@@ -5,6 +5,8 @@ from ShuaBao import ARShuaBao
 from BoBo import ARBoBo
 from ShaFa import ARShaFa
 from ZhongZi import ARZhongZi
+from ZhongZi import ARZhongZiThread
+from HaoKan import ARHaoKan
 import os
 
 # 获取模拟器总数
@@ -76,6 +78,13 @@ App阅读时长
 # 种子
 aRZhongZi = ARZhongZi(execount=100, readtime=50)
 aRZhongZi.read(devices)
+
+# aRZhongZiThread = ARZhongZiThread(100, 50)
+# ARZhongZiThread.read(aRZhongZiThread, devices)
+
+# 好看
+# aRHaoKan = ARHaoKan(execount=200, readtime=60)
+# aRHaoKan.read(devices)
 
 
 

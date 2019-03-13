@@ -62,14 +62,14 @@ App阅读时长
 # autoHongBaoTouTiao.read()
 
 # 刷宝
-appTime_qtt = appTimeBase * 3
-
-autoShuaBao = ARShuaBao(appTime_qtt)
-autoShuaBao.read(devices)
+# appTime_qtt = appTimeBase * 3
+#
+# autoShuaBao = ARShuaBao(appTime_qtt)
+# autoShuaBao.read(devices)
 
 # 波波 550706账号2分钟下发100
-# aRBoBo = ARBoBo(execount=100, readtime=120)
-# aRBoBo.read(devices)
+aRBoBo = ARBoBo(execount=100, readtime=120)
+aRBoBo.read(devices)
 
 # 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
 # aRShaFa = ARShaFa(execount=100, readtime=1)

@@ -34,12 +34,12 @@ class ARBoBo(object):
             # 设备循环执行
             for dName in devices:
                 x1 = random.randint(300, 350)
-                x2 = x1 + random.randint(0, 5) * i
+                x2 = x1 + random.randint(5, 10) * i
                 # 波波加了个 持续下拉显示天气 不能向下拉的太多
 
-                y1 = 800 + random.randint(0, 10) * i
-                y2 = 500 + random.randint(0, 10) * i
-                tm = random.randint(1000, 1500)
+                y1 = 1000 + random.randint(0, 10) * i
+                y2 = y1 - random.randint(400, 450)
+                tm = 1000
                 # 下拉刷新
                 os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d" % (x1, y2, x2, y1, tm))
             # 等待

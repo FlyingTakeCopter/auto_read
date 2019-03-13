@@ -62,10 +62,10 @@ App阅读时长
 # autoHongBaoTouTiao.read()
 
 # 刷宝
-# appTime_qtt = appTimeBase * 1.4
-#
-# autoShuaBao = ARShuaBao(appTime_qtt)
-# autoShuaBao.read(devices)
+appTime_qtt = appTimeBase * 3
+
+autoShuaBao = ARShuaBao(appTime_qtt)
+autoShuaBao.read(devices)
 
 # 波波 550706账号2分钟下发100
 # aRBoBo = ARBoBo(execount=100, readtime=120)
@@ -76,8 +76,8 @@ App阅读时长
 # aRShaFa.read(devices)
 
 # 种子
-aRZhongZi = ARZhongZi(execount=100, readtime=30)
-aRZhongZi.read(devices)
+# aRZhongZi = ARZhongZi(execount=100, readtime=30)
+# aRZhongZi.read(devices)
 
 # aRZhongZiThread = ARZhongZiThread(100, 50)
 # ARZhongZiThread.read(aRZhongZiThread, devices)

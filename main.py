@@ -8,6 +8,7 @@ from ZhongZi import ARZhongZi
 from ZhongZi import ARZhongZiThread
 from HaoKan import ARHaoKan
 import os
+import re
 
 # 获取模拟器总数
 def getDevicesAll():
@@ -29,6 +30,33 @@ def getDevicesAll():
 
 
 devices = getDevicesAll()
+
+for dName in devices:
+    # 亮屏
+    os.system("adb -s %s shell input keyevent 26" % dName)
+    # 开机
+    os.system("adb -s %s shell input swipe 500 800 500 50" % dName)
+    # 获取分辨率
+
+# 获取屏幕分辨率计算屏幕中心
+f = os.popen("adb shell wm size")
+screen_width,screen_height = re.search("(\d{3,4})x(\d{3,4})", f.read()).groups()
+center = (int(screen_width)/2, int(screen_height)/2)
+
+# 查看前台应用
+# adb shell dumpsys activity activities
+
+# 查看电池状态
+# adb shell dumpsys battery
+
+# 查看内存
+# MemTotal 就是设备的总内存，MemFree 是当前空闲内存。
+
+# 检测设备是否已 root
+# 命令：
+# adb shell
+# su
+# 此时命令行提示符是 $ 则表示没有 root 权限，是 # 则表示已 root。
 
 # 时间单位 1小时
 appTimeBase = 3600
@@ -61,23 +89,29 @@ App阅读时长
 # autoHongBaoTouTiao = ARHongBaoTouTiao(appTime_qtt, readTime_qtt)
 # autoHongBaoTouTiao.read()
 
-# 刷宝
+# 刷宝 com.jm.video/.ui.main.SplashActivity
+# 打开刷宝
+os.system("adb shell am start -n com.jm.video/.ui.main.SplashActivity")
 # appTime_qtt = appTimeBase * 3
 #
 # autoShuaBao = ARShuaBao(appTime_qtt)
 # autoShuaBao.read(devices)
+os.system("adb shell am force-stop com.jm.video")
 
 # 波波 550706账号2分钟下发100
+# tv.yixia.bobo/com.kg.v1.welcome.WelcomeActivity
 # aRBoBo = ARBoBo(execount=100, readtime=120)
 # aRBoBo.read(devices)
 
 # 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
-# aRShaFa = ARShaFa(execount=100, readtime=3)
-# aRShaFa.read(devices)
+# com.sohu.youju/.app.ui.activity.HelloActivity
+aRShaFa = ARShaFa(execount=100, readtime=3)
+aRShaFa.read(devices)
 
 # 种子
-aRZhongZi = ARZhongZi(execount=100, readtime=30)
-aRZhongZi.read(devices)
+# com.inke.gaia/.splash.SplashActivity
+# aRZhongZi = ARZhongZi(execount=100, readtime=30)
+# aRZhongZi.read(devices)
 
 # aRZhongZiThread = ARZhongZiThread(100, 50)
 # ARZhongZiThread.read(aRZhongZiThread, devices)

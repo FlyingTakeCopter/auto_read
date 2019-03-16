@@ -10,6 +10,12 @@ class ARBoBo(object):
         self.readtime = readtime
 
     def read(self, devices):
+        # 打开种子
+        for dName in devices:
+            os.system("adb -s %s shell am start -n tv.yixia.bobo/com.kg.v1.welcome.WelcomeActivity" % dName)
+        # 等待
+        time.sleep(30)
+
         count = 0
         i = 1
         # 主程序逻辑 执行时长小于总时长
@@ -21,7 +27,7 @@ class ARBoBo(object):
             # 获取新的阅读时长
             rt = self.readtime + random.randint(1, 5)
             # 点击第一个观看
-            x1 = 600 + random.randint(0, 100) * i
+            x1 = 100 + random.randint(0, 100) * i
             y1 = 500 - random.randint(0, 40) * i
             for dName in devices:
                 os.system("adb -s " + dName + " shell input tap %d %d" % (x1, y1))
@@ -33,7 +39,7 @@ class ARBoBo(object):
                 time.sleep(3)
             # 设备循环执行
             for dName in devices:
-                x1 = random.randint(300, 350)
+                x1 = random.randint(100, 150)
                 x2 = x1 + random.randint(5, 10) * i
                 # 波波加了个 持续下拉显示天气 不能向下拉的太多
 
@@ -46,3 +52,6 @@ class ARBoBo(object):
             time.sleep(random.randint(1, 3))
 
         print("阅读完成：波波")
+        # 关闭
+        for dName in devices:
+            os.system("adb -s %s shell am force-stop tv.yixia.bobo", dName)

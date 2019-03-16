@@ -9,6 +9,12 @@ class ARShuaBao(object):
         self.apptime = apptime
 
     def read(self, devices):
+        # 打开刷宝
+        for dName in devices:
+            os.system("adb -s %s shell am start -n com.jm.video/.ui.main.SplashActivity" % dName)
+        # 等待
+        time.sleep(10)
+
         appstart = time.time()
         count = 0
         # 主程序逻辑 执行时长小于总时长
@@ -30,3 +36,8 @@ class ARShuaBao(object):
             for dName in devices:
                 os.system("adb -s " + dName + " shell input swipe %d %d %d %d 1500 &" % (x, y1, x, y2))  # 后台执行 小米800-200
         print("阅读完成：刷宝")
+
+        # 关闭刷宝
+        for dName in devices:
+            os.system("adb -s %s shell am force-stop com.jm.video" % dName)
+

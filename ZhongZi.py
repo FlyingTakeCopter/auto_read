@@ -11,6 +11,12 @@ class ARZhongZi(object):
         self.readtime = readtime
 
     def read(self, devices):
+        # 打开种子
+        for dName in devices:
+            os.system("adb -s %s shell am start -n com.inke.gaia/.splash.SplashActivity" % dName)
+        # 等待
+        time.sleep(30)
+
         count = 0
         i = 1
         # 主程序逻辑 执行时长小于总时长
@@ -51,6 +57,9 @@ class ARZhongZi(object):
             # time.sleep(random.randint(1, 3))
 
         print("阅读完成：种子")
+        # 关闭
+        for dName in devices:
+            os.system("adb -s %s shell am force-stop com.inke.gaia", dName)
 
 
 class ARZhongZiThread(object):

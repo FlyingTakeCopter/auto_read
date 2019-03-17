@@ -54,4 +54,4 @@ class ARBoBo(object):
         print("阅读完成：波波")
         # 关闭
         for dName in devices:
-            os.system("adb -s %s shell am force-stop tv.yixia.bobo", dName)
+            os.system("adb -s %s shell am force-stop tv.yixia.bobo" % dName)

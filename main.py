@@ -37,6 +37,8 @@ for dName in devices:
     os.system("adb -s %s shell input keyevent 26" % dName)
     # 开机
     os.system("adb -s %s shell input swipe 500 1200 500 100 100" % dName)
+    # # 改亮度值（亮度值在0—255之间）
+    # os.system("adb -s %s shell settings put system screen_brightness 0" % dName)
 
 # 获取分辨率
 # 获取屏幕分辨率计算屏幕中心
@@ -100,18 +102,18 @@ App阅读时长
 
 # 波波 550706账号2分钟下发100
 # tv.yixia.bobo/com.kg.v1.welcome.WelcomeActivity
-aRBoBo = ARBoBo(execount=100, readtime=120)
-aRBoBo.read(devices)
-
-# 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
-# com.sohu.youju/.app.ui.activity.HelloActivity
-# aRShaFa = ARShaFa(execount=100, readtime=3)
-# aRShaFa.read(devices)
+# aRBoBo = ARBoBo(execount=50, readtime=120)
+# aRBoBo.read(devices)
 
 # 种子
 # com.inke.gaia/.splash.SplashActivity
-aRZhongZi = ARZhongZi(execount=10000, readtime=30)
-aRZhongZi.read(devices)
+# aRZhongZi = ARZhongZi(execount=100, readtime=30)
+# aRZhongZi.read(devices)
+
+# 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
+# com.sohu.youju/.app.ui.activity.HelloActivity
+aRShaFa = ARShaFa(execount=100, readtime=60)
+aRShaFa.read(devices)
 
 # aRZhongZiThread = ARZhongZiThread(100, 50)
 # ARZhongZiThread.read(aRZhongZiThread, devices)

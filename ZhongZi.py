@@ -46,7 +46,7 @@ class ARZhongZi(object):
             for dName in devices:
                 # os.system("adb -s " + dName + " shell input keyevent 4")
                 # time.sleep(1)
-                x1 = random.randint(300, 350)
+                x1 = random.randint(100, 150)
                 x2 = x1
                 y1 = 900 + random.randint(0, 10)
                 y2 = y1 - random.randint(500, 550)
@@ -59,7 +59,7 @@ class ARZhongZi(object):
         print("阅读完成：种子")
         # 关闭
         for dName in devices:
-            os.system("adb -s %s shell am force-stop com.inke.gaia", dName)
+            os.system("adb -s %s shell am force-stop com.inke.gaia" % dName)
 
 
 class ARZhongZiThread(object):

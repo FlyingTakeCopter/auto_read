@@ -13,7 +13,7 @@ class ARShaFa(object):
         # 打开种子
         for dName in devices:
             os.system("adb -s %s shell am start -n com.sohu.youju/.app.ui.activity.HelloActivity" % dName)
-        # 等待
+        # # 等待
         time.sleep(30)
 
         count = 0
@@ -26,26 +26,26 @@ class ARShaFa(object):
             i = -i
             # 获取新的阅读时长
             rt = self.readtime + random.randint(1, 5)
-            # 点击第一个观看
+            # # 点击第一个观看
             x1 = 100 + random.randint(0, 50) * i
             y1 = 500 - random.randint(0, 40) * i
             for dName in devices:
                 os.system("adb -s " + dName + " shell input tap %d %d" % (x1, y1))
-            # 浏览70秒
-            # 记录开始时间
+            # # 浏览70秒
+            # # 记录开始时间
             start = time.time()
             # 持续固定时长X
             while (time.time() - start) < rt:
                 time.sleep(3)
             # 设备循环执行
             for dName in devices:
-                x1 = random.randint(100, 150)
+                x1 = random.randint(10, 100)
                 x2 = x1
-                y1 = 800 + random.randint(0, 10)
+                y1 = 1200 + random.randint(0, 10)
                 y2 = y1 - random.randint(500, 550)
-                tm = 1000
+                tm = 2000
                 # 下拉刷新
-                os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d &" % (x1, y2, x2, y1, tm))
+                os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d" % (x1, y2, x2, y1, tm))
             # 等待
             # time.sleep(random.randint(1, 3))
 

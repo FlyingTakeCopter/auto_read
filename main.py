@@ -7,9 +7,11 @@ from ShaFa import ARShaFa
 from ZhongZi import ARZhongZi
 from ZhongZi import ARZhongZiThread
 from HaoKan import ARHaoKan
+from HuiShiPin import ARHuiShiPin
 import os
 import re
 import time
+
 
 # 获取模拟器总数
 def getDevicesAll():
@@ -32,6 +34,22 @@ def getDevicesAll():
 
 devices = getDevicesAll()
 
+
+def getDevicesScreenWH(devices):
+    screenWH = []
+    for dName in devices:
+        # 获取分辨率
+        # 获取屏幕分辨率计算屏幕中心
+        f = os.popen("adb -s " + dName + " shell wm size")
+        screen_width,screen_height = re.search("(\d{3,4})x(\d{3,4})", f.read()).groups()
+        center = (int(screen_width)/2, int(screen_height)/2)
+        screenWH.append([int(screen_width), int(screen_height)])
+    return screenWH
+
+
+screenWH = getDevicesScreenWH(devices)
+
+
 for dName in devices:
     # 亮屏
     os.system("adb -s %s shell input keyevent 26" % dName)
@@ -40,13 +58,8 @@ for dName in devices:
     # # 改亮度值（亮度值在0—255之间）
     os.system("adb -s %s shell settings put system screen_brightness 50" % dName)
 
-# 获取分辨率
-# 获取屏幕分辨率计算屏幕中心
-# f = os.popen("adb shell wm size")
-# screen_width,screen_height = re.search("(\d{3,4})x(\d{3,4})", f.read()).groups()
-# center = (int(screen_width)/2, int(screen_height)/2)
 
-time.sleep(5)
+# time.sleep(5)
 
 # 查看前台应用
 # adb shell dumpsys activity activities
@@ -96,19 +109,24 @@ App阅读时长
 
 # 刷宝 com.jm.video/.ui.main.SplashActivity
 # 打开刷宝
-appTime_qtt = appTimeBase * 2
-autoShuaBao = ARShuaBao(appTime_qtt)
-autoShuaBao.read(devices)
-
-# 波波 550706账号2分钟下发100
-# tv.yixia.bobo/com.kg.v1.welcome.WelcomeActivity
-aRBoBo = ARBoBo(execount=50, readtime=120)
-aRBoBo.read(devices)
+# appTime_qtt = appTimeBase * 2
+# autoShuaBao = ARShuaBao(appTime_qtt)
+# autoShuaBao.read(devices)
+#
+# # 波波 550706账号2分钟下发100
+# # tv.yixia.bobo/com.kg.v1.welcome.WelcomeActivity
+# aRBoBo = ARBoBo(execount=50, readtime=120)
+# aRBoBo.read(devices)
 
 # 种子
 # com.inke.gaia/.splash.SplashActivity
-aRZhongZi = ARZhongZi(execount=100, readtime=30)
-aRZhongZi.read(devices)
+# aRZhongZi = ARZhongZi(execount=200, readtime=30)
+# aRZhongZi.read(devices)
+
+# 惠视频
+# com.cashvideo/.LaunchPageActivity
+aRHui = ARHuiShiPin(execount=50, readtime=40)
+aRHui.read(devices, screenWH)
 
 # 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
 # com.sohu.youju/.app.ui.activity.HelloActivity

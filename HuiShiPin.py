@@ -23,7 +23,7 @@ class ARHuiShiPin(object):
             print("种子 读了%d次" % count)
             # 随机数转换
             # 获取新的阅读时长
-            rt = self.readtime + random.randint(1, 5)
+            # rt = self.readtime + random.randint(1, 5)
             # 点击第一个观看
             x1 = random.randint(10, 100)
             y1 = 700 - random.randint(0, 40)
@@ -32,10 +32,10 @@ class ARHuiShiPin(object):
             # 记录开始时间
             start = time.time()
             # 持续固定时长X
-            while (time.time() - start) < rt:
+            while (time.time() - start) < self.readtime:
                 time.sleep(3)
 
-            # 点击领取金币 每个视频看40秒 没两个视频领一次奖励
+            # 点击领取金币 每个视频看30秒 没两个视频领一次奖励
             if count > 2 & ((count % 2) == 0):
                 n = 0
                 for dName in devices:

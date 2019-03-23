@@ -9,7 +9,7 @@ class ARShaFa(object):
         self.execount = execount
         self.readtime = readtime
 
-    def read(self, devices):
+    def read(self, devices, screenWH):
         # 打开种子
         for dName in devices:
             os.system("adb -s %s shell am start -n com.sohu.youju/.app.ui.activity.HelloActivity" % dName)
@@ -37,17 +37,27 @@ class ARShaFa(object):
             # 持续固定时长X
             while (time.time() - start) < rt:
                 time.sleep(3)
+
+            n = 0
             # 设备循环执行
             for dName in devices:
                 x1 = random.randint(10, 100)
                 x2 = x1
-                y1 = 1200 + random.randint(0, 10)
-                y2 = y1 - random.randint(500, 550)
+                y_1_4 = screenWH[n][1] / 4
+                y_3_4 = screenWH[n][1] / 4 * 3
+                y1 = y_3_4 - random.randint(1, 50)
+                y2 = y_1_4 - random.randint(1, 50)
                 tm = 2000
+                # 竟然会不定期向下翻页。。。啥情况 先翻到最上面再刷新
+                os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d" % (x1, y2, x2, y1, 100))
+
                 # 下拉刷新
                 os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d" % (x1, y2, x2, y1, tm))
-            # 等待
-            # time.sleep(random.randint(1, 3))
+                n = n + 1
+
+
+        # 等待
+        # time.sleep(random.randint(1, 3))
 
         print("阅读完成：沙发")
         # 关闭

@@ -120,18 +120,18 @@ App阅读时长
 
 # 种子
 # com.inke.gaia/.splash.SplashActivity
-# aRZhongZi = ARZhongZi(execount=200, readtime=30)
+# aRZhongZi = ARZhongZi(execount=100, readtime=30)
 # aRZhongZi.read(devices)
 
 # 惠视频
 # com.cashvideo/.LaunchPageActivity
-aRHui = ARHuiShiPin(execount=50, readtime=40)
-aRHui.read(devices, screenWH)
+# aRHui = ARHuiShiPin(execount=100, readtime=30)
+# aRHui.read(devices, screenWH)
 
 # 沙发视频 60s 10金币 6000 = 1元 全看完要10个小时 逗我呢？
 # com.sohu.youju/.app.ui.activity.HelloActivity
 aRShaFa = ARShaFa(execount=100, readtime=60)
-aRShaFa.read(devices)
+aRShaFa.read(devices, screenWH)
 
 # aRZhongZiThread = ARZhongZiThread(100, 50)
 # ARZhongZiThread.read(aRZhongZiThread, devices)

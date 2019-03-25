@@ -20,7 +20,7 @@ class ARHuiShiPin(object):
         # 主程序逻辑 执行时长小于总时长
         while count < self.execount:
             count += 1
-            print("种子 读了%d次" % count)
+            print("惠视频 读了%d次" % count)
             # 随机数转换
             # 获取新的阅读时长
             # rt = self.readtime + random.randint(1, 5)

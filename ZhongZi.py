@@ -40,9 +40,18 @@ class ARZhongZi(object):
                 time.sleep(3)
             for dName in devices:
                 os.system("adb -s " + dName + " shell input keyevent 4")
-                # os.system("adb -s " + dName + " shell input keyevent 4")
             # time.sleep(1)
             # 设备循环执行
+            for dName in devices:
+                # os.system("adb -s " + dName + " shell input keyevent 4")
+                # time.sleep(1)
+                x1 = random.randint(100, 150)
+                x2 = x1
+                y1 = 900 + random.randint(0, 10)
+                y2 = y1 - random.randint(500, 550)
+                tm = 1000
+                # 下拉刷新
+                os.system("adb -s " + dName + " shell input swipe %d %d %d %d %d &" % (x1, y2, x2, y1, tm))
             for dName in devices:
                 # os.system("adb -s " + dName + " shell input keyevent 4")
                 # time.sleep(1)
